@@ -1,44 +1,40 @@
-
-import{Routes,Route} from "react-router-dom";
-
-
+import React, { useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Classpage from "./pages/Classpage";
 import Testimonials from "./pages/Testimonials";
-import homepage from "./pages/homepage";
+import Homepage from "./pages/homepage";
 import Faqpage from "./pages/Faqpage";
 import AddJobs from "./pages/AddJobs";
-
-
+import Form from "./pages/form";
 import NavbarComponent from "./Components/NavbarComponent";
 import Footer from "./Components/Footer";
-
-
-
-
-
-
-
+import EmployeeForm from "./pages/employeeform";
 
 function App() {
-  
-  return(
+  const location = useLocation();
+  const hideHeaderFooterRoutes = ['/form'];
 
-    <div> 
-      <NavbarComponent/>
+
+  // Function to check if the current route should hide header and footer
+  const shouldHideHeaderFooter = () => {
+    return hideHeaderFooterRoutes.includes(location.pathname);
+  };
+
+  return (
+    <div>
+      {!shouldHideHeaderFooter() && <NavbarComponent/>}
       <Routes>
-        <Route  path ="/" Component={homepage}/>
-        <Route  path ="/class" Component={Classpage}/>
-        <Route  path ="/testimonial" Component={Testimonials}/>
-        <Route  path ="/faq" Component={Faqpage}/>
-        <Route  path ="/addjobs" Component={AddJobs}/>
-
-
-
+        <Route path="/" element={<Homepage />} />
+        <Route path="/class" element={<Classpage />} />
+        <Route path="/testimonial" element={<Testimonials />} />
+        <Route path="/faq" element={<Faqpage />} />
+        <Route path="/addjobs" element={<AddJobs />} />
+        <Route path = "/applyform" element={<EmployeeForm/>} />
+        <Route path="/form" element={<Form />} />
       </Routes>
-      <Footer/>
+      {!shouldHideHeaderFooter() && <Footer />}
     </div>
-
-  )
+  );
 }
 
-export default App
+export default App;

@@ -2,10 +2,12 @@
 
 import {Container,Row,Col} from "react-bootstrap";
 import { allClass } from "../data/index";
+import { useNavigate } from 'react-router-dom';
 
 import Faqcomponent from "../Components/Faqcomponent";
 
 const Classpage = () => {
+  let navigate =useNavigate();
   return (
     <div className="class-page">
         <div className="class min-vh-100">
@@ -39,9 +41,9 @@ const Classpage = () => {
                       <h5 className="mb-5 px-3">{classItem.title}</h5>
                       <div className="ket d-flex justify-content-between align-items-center px-3"> 
                         <p className="m-0 text-primary fw-bold">{classItem.price}</p>
-                        <button className="btn btn-danger rounded-1">
-                          {classItem.buy}
-                        </button>
+                         <button   className="btn btn-danger rounded-1" onClick={() => navigate("/form")}>  
+                    {classItem.buy}
+                    </button>
                       </div>
 
 

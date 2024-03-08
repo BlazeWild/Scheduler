@@ -1,24 +1,35 @@
-import {Container, Row, Col} from "react-bootstrap";
-import HeroImage from "../assets/img/hero.png";
-import { NewestClass, dataSwiper } from "../data/index";
-import {useNavigate} from "react-router-dom";
-import Faqcomponent from "../Components/Faqcomponent";
-
+import React, { useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import AOS from "aos";
-// Import Swiper styles
+import AOS from 'aos';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import PopupContent from './PopupContent';
+import { NewestClass, dataSwiper } from '../data/index';
+import Faqcomponent from '../Components/Faqcomponent';
+import HeroImage from '../assets/img/hero.png';
 
 
 
 // import required modules
 import { Pagination } from 'swiper/modules';
 
-
+// for popupwindow close and open
 
 const homepage = () => {
   let navigate =useNavigate();
+  // for popupwindow close and open
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <div className="homepage">
       <header className="w-100 min-vh-100 d-flex align-items-center overflow-hidden">
@@ -52,6 +63,9 @@ const homepage = () => {
             </p>
             </Col>
           </Row>
+
+          <h1>Top Hirings</h1>
+          {/* cards here */}
           <Row>
             {NewestClass.map((classItem) => {
               return (
@@ -70,8 +84,12 @@ const homepage = () => {
                   <h5 className="mb-5 px-3">{classItem['title']}</h5>
                   <div className="ket d-flex justify-content-between align-items-center px-3"> 
                     <p className="m-0 text-primary fw-bold">{classItem.price}</p>
-                    <button className="btn btn-danger rounded-1">
-                      {classItem.buy}
+                    {/*pop up a new page when button is clicked */}
+                    {/* <button  onClick={handleButtonClick} className="btn btn-danger rounded-1">
+                    {classItem.buy}
+                    </button> */}
+                    <button   className="btn btn-danger rounded-1" onClick={() => navigate("/form")}>  
+                    {classItem.buy}
                     </button>
                   </div>
               </Col>
@@ -159,12 +177,21 @@ const homepage = () => {
 
       {/*Section of Faq */}
       <Faqcomponent/>
-
-
-
       {/*Section of Faq */}
+
+
+          {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <PopupContent onClose={handleClosePopup} />
+          </div>
+        </div>
+      )}
+
+
     </div>
-  )
+
+  );
 }
 
 export default homepage

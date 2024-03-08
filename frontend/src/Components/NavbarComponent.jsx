@@ -24,7 +24,7 @@ const NavbarComponent = () => {
 
         <Navbar expand="lg" className={changeColor ? "color-active":""}>
               <Container>
-                <Navbar.Brand href="#home" className="fs-3 fw-bold">SCHEDULER.</Navbar.Brand>
+                <Navbar.Brand href="#home" className="fs-3 fw-bold">SCHEDULER</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="mx-auto text-center">
@@ -41,8 +41,22 @@ const NavbarComponent = () => {
                       )
 
                     })}
-                    
+                      {/* Add the Candidates button here */}
+    
+                    <div className="nav-link">
+                      <NavLink
+                        to="/applyform"
+                        className={({ isActive, isPending }) =>
+                          isPending ? "pending" : isActive ? "active" : ""
+                        }
+                        end
+                      >
+                        Apply Form
+                      </NavLink>
+                    </div>
                   </Nav>
+
+                  
                   <div className="text-center">
                     <button className="btn btn-outline-primary rounded-1">
                       Login/Register

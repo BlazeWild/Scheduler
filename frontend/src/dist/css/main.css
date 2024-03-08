@@ -1,3 +1,8 @@
+/* @import url("https://cdn.syncfusion.com/ej2/material.css"); */
+
+body {
+    background: linear-gradient(to left, #79e8f7, #fbd786, #c6ffdd);
+}
 *{
     font-family : "Poppins", sans-serif;
 
@@ -47,6 +52,8 @@
     color:var(--navbar-color);
 
 }
+
+
 /*Styling of Navbar*/
 
 /*Styling of Homepage header*/
@@ -531,6 +538,65 @@ header{
 /* Styling Footer*/
 
 
+/* formpage */
+/* main.css */
+.big-box {
+    background-color: #c4d4d6;
+    width: 100%; /* Ensure the box covers the entire page width */
+}
 
+.form-bg {
+    background: linear-gradient(to left, #79e8f7, #fbd786, #c6ffdd);
+    width: 100%; /* Ensure the gradient covers the entire page width */
+}
 
+.street-tole-city-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .street-input,
+  .tole-input,
+  .city-input {
+    width: calc(100%); 
+    padding-right: 10px;/* Adjust the width as needed */
+  }
+  /* main.css */
+/* main.css */
+/* main.css */
+.variable-heading {
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%; /* Set address title to cover 30% of the left space */
+}
+
+.variable-values {
+    width: 100%; /* Set address values to cover 100% of the right space */
+    padding: 10px; /* Add padding to increase size */
+     /* Set background color */
+    border-radius: 5px;
+}
+
+.value-container {/* Add border */
+    box-shadow: none;
+    padding: 10px;
+}
+.address-wrapper {
+    display: none;
+  }
+
+.card-title {
+    text-align: center;
+    font-size:30px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif /* Change font style */
+
+}
+/* Define styles for the small-time-picker class */
+  
+  /* Optional: Style for the custom class if additional styling is required */
+  
+  
+
+  
 
